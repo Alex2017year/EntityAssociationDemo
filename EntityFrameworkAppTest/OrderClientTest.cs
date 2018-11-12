@@ -42,8 +42,6 @@ namespace EntityFrameworkAppTest
             context.Dispose();
         }
 
-
-
         [TestMethod]
         public void TestGetClients()
         {
