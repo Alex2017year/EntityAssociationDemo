@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityAssociationDemo", "EntityAssociationDemo\EntityAssociationDemo.csproj", "{0F321F6D-00A3-445B-A6DB-B683E7B846C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkAppTest", "EntityFrameworkAppTest\EntityFrameworkAppTest.csproj", "{565C402D-739C-4E65-8422-DA5019CC38E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F321F6D-00A3-445B-A6DB-B683E7B846C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F321F6D-00A3-445B-A6DB-B683E7B846C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F321F6D-00A3-445B-A6DB-B683E7B846C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F321F6D-00A3-445B-A6DB-B683E7B846C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{565C402D-739C-4E65-8422-DA5019CC38E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{565C402D-739C-4E65-8422-DA5019CC38E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{565C402D-739C-4E65-8422-DA5019CC38E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{565C402D-739C-4E65-8422-DA5019CC38E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
