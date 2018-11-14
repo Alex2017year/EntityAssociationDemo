@@ -54,6 +54,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Book.cs">
+      <DependentUpon>MyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookReview.cs">
+      <DependentUpon>MyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityCard.cs">
+      <DependentUpon>MyDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MyDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,6 +79,10 @@
       <DependentUpon>MyDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="OrderClient.cs">
+      <DependentUpon>MyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartialModel\OrderClient.cs" />
+    <Compile Include="Person.cs">
       <DependentUpon>MyDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />

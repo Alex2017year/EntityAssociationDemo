@@ -6,6 +6,12 @@
     <edmx:Diagrams>
       <Diagram DiagramId="89b49dd453604ea79d6a4183ff44d593" Name="Diagram1">
         <EntityTypeShape EntityType="MyDBModel.OrderClient" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDBModel.IdentityCard" Width="1.5" PointX="5.625" PointY="0.875" />
+        <EntityTypeShape EntityType="MyDBModel.Person" Width="1.5" PointX="3.375" PointY="0.875" />
+        <AssociationConnector Association="MyDBModel.FK_IdentityCard_Person" />
+        <EntityTypeShape EntityType="MyDBModel.Book" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="MyDBModel.BookReview" Width="1.5" PointX="3" PointY="3.875" />
+        <AssociationConnector Association="MyDBModel.FK_BookReview_Book" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

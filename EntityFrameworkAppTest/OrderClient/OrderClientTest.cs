@@ -10,7 +10,6 @@ namespace EntityFrameworkAppTest
     [TestClass]
     public class OrderClientTest
     {
-
         // 使用测试初始化避免 var context = new MyDBEntities()，多次重复定义
         private TestContext testContextInstance;
         public TestContext TestContext
@@ -26,7 +25,7 @@ namespace EntityFrameworkAppTest
             }
         }
 
-        
+
 
         private static MyDBEntities context;
 
@@ -46,7 +45,7 @@ namespace EntityFrameworkAppTest
         public void TestGetClients()
         {
             var clients = from c in context.OrderClients
-                            select c;
+                          select c;
 
             Assert.IsTrue(clients.Count() > 0);
             foreach (var client in clients)

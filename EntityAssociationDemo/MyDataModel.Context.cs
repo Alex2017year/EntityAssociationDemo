@@ -18,6 +18,7 @@ namespace EntityAssociationDemo
         public MyDBEntities()
             : base("name=MyDBEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -26,5 +27,9 @@ namespace EntityAssociationDemo
         }
     
         public virtual DbSet<OrderClient> OrderClients { get; set; }
+        public virtual DbSet<IdentityCard> IdentityCards { get; set; }
+        public virtual DbSet<Person> People { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<BookReview> BookReviews { get; set; }
     }
 }
