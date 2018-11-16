@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EntityAssociationDemo;
 using System.Data.Entity;
+using System.Linq;
 using System.Data.Entity.Infrastructure;
 using System.Threading.Tasks;
 
@@ -87,10 +88,63 @@ namespace EntityFrameworkAppTest.SingleEntity
             Console.WriteLine(client);
 
             // 读取数据库
-            OrderClient clientFromDB = await context.OrderClients.FirstOrDefaultAsync(c => c.Equals(client));
+            OrderClient clientFromDB = await context.OrderClients.FirstOrDefaultAsync(c => c.ClientID == client.ClientID);
             Assert.IsNotNull(clientFromDB);
             //检测两个OrderClient对象是相等的
             Assert.IsTrue(clientFromDB.Equals(client));
+        }
+
+        [TestMethod]
+        public async Task TestModify()
+        {
+            // 获取最后一条记录
+            // 由于EF不支持Last()查询，因此，先对其进行降序排列，然后取得第一条记录
+            var client = await (from c in context.OrderClients
+                                orderby c.ClientID descending
+                                select c).FirstOrDefaultAsync();
+
+            if (client != null)
+            {
+                // 更新邮编，+1，再更新到数据库中
+                string newPostCode = (Int32.Parse(client.PostCode) + 1).ToString();
+                client.PostCode = newPostCode;
+                int result = await context.SaveChangesAsync();
+                Assert.IsTrue(result == 1);
+
+                // 从数据库中再次提取原始值，以确定数据的更新
+                OrderClient clientFromDB = context.OrderClients.First(c => c.PostCode == newPostCode);
+                Assert.IsTrue(client.Equals(clientFromDB));
+            }
+
+        }
+
+        [TestMethod]
+        public async Task TestDelete()
+        {
+            //获取最后一条记录
+            //由于EF不支持Last()查询，因此，先对其进行降序排列，然后取第一条记录
+            var client = await (from c in context.OrderClients
+                                orderby c.ClientID descending
+                                select c).FirstAsync();
+
+            if (client != null)
+            {
+                context.OrderClients.Remove(client);
+                int result = await context.SaveChangesAsync();
+                Assert.IsTrue(result == 1);
+            }
+        }
+
+        [TestMethod]
+        public void TestDelete2()
+        {
+            // 直接删除对象边界方法
+            // 如果已经知道要删除对象的主键值，那么可以通过Attach一个“样板”对，再删除
+            // 好处：不需要从数据库中提取数据，创建实体对象，再查找并删除
+            OrderClient stubClient = new OrderClient { ClientID = 100 };
+            context.OrderClients.Attach(stubClient);
+            context.OrderClients.Remove(stubClient);
+            context.SaveChanges();
         }
     }
 }
